@@ -104,11 +104,11 @@ namespace ProductShop
         }
         public static string GetSoldProducts(ProductShopContext context)
         {
-            ExportUserSoldProductsDto[] users = context.Users
+            ExportUserWitgSoldProductsDto[] users = context.Users
                 .Where(x => x.ProductsSold.Any(p => p.BuyerId.HasValue))
                 .OrderBy(x => x.LastName)
                 .ThenBy(x => x.FirstName)
-                .ProjectTo<ExportUserSoldProductsDto>()
+                .ProjectTo<ExportUserWitgSoldProductsDto>()
                 .ToArray();
                  string json = JsonConvert.SerializeObject(users, Formatting.Indented);
             return json;

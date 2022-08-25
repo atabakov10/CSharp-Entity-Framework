@@ -26,7 +26,7 @@ namespace ProductShop
                 .ForMember(x => x.BuyerLastName,
                     mo => mo.MapFrom(s => s.Buyer.LastName));
             //Outer Dto
-            this.CreateMap<User, GetSoldProductsDto>()
+            this.CreateMap<User, ExportUserWitgSoldProductsDto>()
                 .ForMember(x => x.SoldProducts,
                     mo => mo.MapFrom(s =>
                         s.ProductsSold.Where(x=> x.BuyerId.HasValue)));

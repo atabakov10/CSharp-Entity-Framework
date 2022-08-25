@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace ProductShop.Dtos.Product
 {
     [JsonObject]
-    public class GetSoldProductsDto
+    public class ExportUserWitgSoldProductsDto
     {
         [JsonProperty("firstName")]
         public string FirstName { get; set; }
