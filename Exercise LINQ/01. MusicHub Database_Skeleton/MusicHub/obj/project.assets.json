@@ -7048,11 +7048,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\source\\repos\\NewRepo\\01. MusicHub Database_Skeleton\\MusicHub\\MusicHub.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\source\\repos\\CSharp-Entity-Framework\\Exercise LINQ\\01. MusicHub Database_Skeleton\\MusicHub\\MusicHub.csproj",
       "projectName": "MusicHub",
-      "projectPath": "C:\\Users\\HP\\source\\repos\\NewRepo\\01. MusicHub Database_Skeleton\\MusicHub\\MusicHub.csproj",
+      "projectPath": "C:\\Users\\HP\\source\\repos\\CSharp-Entity-Framework\\Exercise LINQ\\01. MusicHub Database_Skeleton\\MusicHub\\MusicHub.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\source\\repos\\NewRepo\\01. MusicHub Database_Skeleton\\MusicHub\\obj\\",
+      "outputPath": "C:\\Users\\HP\\source\\repos\\CSharp-Entity-Framework\\Exercise LINQ\\01. MusicHub Database_Skeleton\\MusicHub\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",

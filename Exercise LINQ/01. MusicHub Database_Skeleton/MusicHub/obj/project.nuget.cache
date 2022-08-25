@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+v7LFu2iBxLSDjTJltNamqlPslylKQszduSF9kzcjJDNTkteVJEdWOXa9PXC6mzRWQJK0qOTAq4+P6TtZQQTEw==",
+  "dgSpecHash": "X/H5ZJ7pPQ0FtRUMgD9fsJMD5vVpbvb4RaAnO9vzRSqiQp8fMbDHeNRc1xh4/0lsufvSuXu3P2swRpXnTRDvLg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\source\\repos\\NewRepo\\01. MusicHub Database_Skeleton\\MusicHub\\MusicHub.csproj",
+  "projectFilePath": "C:\\Users\\HP\\source\\repos\\CSharp-Entity-Framework\\Exercise LINQ\\01. MusicHub Database_Skeleton\\MusicHub\\MusicHub.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
