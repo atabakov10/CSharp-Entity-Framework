@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Xml.Serialization;
 using CarDealer.Data;
+using CarDealer.Dtos.Export;
 using CarDealer.Dtos.Import;
 using CarDealer.Models;
 
@@ -15,9 +17,9 @@ namespace CarDealer
         public static void Main(string[] args)
         {
             CarDealerContext context = new CarDealerContext();
-            string xml = File.ReadAllText("../../../Datasets/cars.xml");
+            //string xml = File.ReadAllText("../../../Datasets/bmw-cars.xml");
 
-            string result = ImportCars(context, xml);
+            string result = GetCarsFromMakeBmw(context);
             Console.WriteLine(result);
             //context.Database.EnsureDeleted();
             //context.Database.EnsureCreated();
@@ -110,6 +112,33 @@ namespace CarDealer
             context.Cars.AddRange(cars);
             context.SaveChanges();
             return $"Successfully imported {cars.Count}";
+        }
+        public static string GetCarsFromMakeBmw(CarDealerContext context)
+        {
+            StringBuilder sb = new StringBuilder();
+            ExportBmwCarsDto[] bmwCars = context
+                .Cars
+                .Where(s => s.Make == "BMW")
+                .OrderBy(x => x.Model)
+                .ThenByDescending(x => x.TravelledDistance)
+                .Select(x => new ExportBmwCarsDto()
+                {
+                    Id = x.Id,
+                    Model = x.Model,
+                    TravelledDistance = x.TravelledDistance,
+                })
+                .ToArray();
+            XmlRootAttribute root = new XmlRootAttribute("cars");
+            XmlSerializerNamespaces xmlns = new XmlSerializerNamespaces();
+            xmlns.Add(String.Empty, String.Empty);
+
+            XmlSerializer serializer = new XmlSerializer(typeof(ExportBmwCarsDto[]), root);
+
+            using StringWriter writer = new StringWriter(sb);
+            serializer.Serialize(writer, bmwCars, xmlns);
+
+
+            return sb.ToString().TrimEnd();
         }
 
         private static T Deserialize<T>(string inputXml, string rootName)
