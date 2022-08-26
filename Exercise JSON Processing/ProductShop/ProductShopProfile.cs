@@ -29,8 +29,10 @@ namespace ProductShop
             this.CreateMap<User, ExportUserWitgSoldProductsDto>()
                 .ForMember(x => x.SoldProducts,
                     mo => mo.MapFrom(s =>
-                        s.ProductsSold.Where(x=> x.BuyerId.HasValue)));
-
+                        s.ProductsSold.Where(x => x.BuyerId.HasValue)));
+            this.CreateMap<Category, ExportCategoriesByProductsCountDto>()
+                .ForMember(x => x.Products, mo =>
+                    mo.MapFrom(s => s.CategoryProducts.Count));
         }
     }
 }

@@ -29,7 +29,7 @@ namespace ProductShop
             //Console.WriteLine("Database copy was created!");
 
            // var usersJsonAsString = File.ReadAllText("../../../Datasets/products-in-range.json");
-            string json = GetSoldProducts(dbContext);
+            string json = GetCategoriesByProductsCount(dbContext);
             File.WriteAllText(filePath, json);
         }
         public static string ImportUsers(ProductShopContext context, string inputJson)
@@ -113,6 +113,25 @@ namespace ProductShop
                  string json = JsonConvert.SerializeObject(users, Formatting.Indented);
             return json;
 
+        }
+        public static string GetCategoriesByProductsCount(ProductShopContext context)
+        {
+            var categories = context.Categories
+                .OrderByDescending(c => c.CategoryProducts.Count)
+                .Select(c => new
+                {
+                    category = c.Name,
+                    productsCount = c.CategoryProducts.Count,
+                    averagePrice = c.CategoryProducts
+                        .Average(p => p.Product.Price)
+                        .ToString("0.00"),
+                    totalRevenue = c.CategoryProducts
+                        .Sum(p => p.Product.Price)
+                        .ToString("0.00")
+                })
+                .ToArray();
+
+            return JsonConvert.SerializeObject(categories, Formatting.Indented);
         }
         private static void InitializeOutputFilePath(string fileName)
         {
